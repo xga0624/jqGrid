@@ -1,0 +1,80 @@
+
+
+    <!--author:cjh
+    -->
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="cn">
+	<head>
+		<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+		
+<script type="text/javascript">
+	var ctx = "/jqGrid";
+	var console = console||new Object();
+	console.info = console.info||function(){};
+</script>
+<link rel="stylesheet" href="https://blog.mn886.net/jqGrid/javascript/jqgrid/css/ui.jqgrid.css" />
+<link rel="stylesheet" href="https://blog.mn886.net/jqGrid/javascript/jqgrid/css/css/redmond/jquery-ui-1.8.16.custom.css" />
+<link rel="stylesheet" href="https://blog.mn886.net/jqGrid/common/common.css" />
+
+<script type="text/javascript" src="https://blog.mn886.net/jqGrid/javascript/jquery-1.7.1.js"></script>
+<script type="text/javascript" src="js/jquery.jqGrid.src.js"></script>
+<script type="text/javascript" src="https://blog.mn886.net/jqGrid/javascript/jqgrid/js/i18n/grid.locale-cn.js"></script>
+		<title>jqGrid demos</title>
+		<!-- <script type="text/javascript" src="index.js"></script> -->
+	</head>
+	<body>
+      <!-- <table id="list4"></table> -->
+      <table id="gfrc"></table> 
+       <div id="pgfrc"></div>
+	</body>
+</html>
+<script type="text/javascript">
+  $(function(){
+    pageInit();
+    // 
+  });
+function pageInit(){
+  jQuery("#gfrc").jqGrid(
+      {
+        datatype : "local",
+        colNames : [ 'Inv No', 'Date', 'Client', 'Amount', 'Tax','Total', 'Notes', 'Notes1', 'Notes2', 'Notes3', 'Notes4', 'Notes5' ],
+        colModel : [ 
+                     {name : 'id',index : 'id',width : 60,sorttype : "int",frozen : true,tfixed: 'left'}, 
+                     {name : 'invdate',index : 'invdate',width : 90,sorttype : "date", frozen : true,tfixed: 'left'}, 
+                     {name : 'name',index : 'name',width : 100, frozen : true,tfixed: 'left'}, 
+                     {name : 'amount',index : 'amount',width : 80,align : "right",sorttype : "float"}, 
+                     {name : 'tax',index : 'tax',width : 180,align : "right",sorttype : "float"}, 
+                     {name : 'total',index : 'total',width : 180,align : "right",sorttype : "float"}, 
+                     {name : 'note',index : 'note',width : 150,sortable : false},
+                     {name : 'note1',index : 'note',width : 150,sortable : false},
+                     {name : 'note2',index : 'note',width : 150,sortable : false},
+                     {name : 'note3',index : 'note',width : 150,sortable : false},
+                     {name : 'note4',index : 'note',width : 150,sortable : false,frozen : true,tfixed: 'right'},
+                     {name : 'note5',index : 'note',width : 150,sortable : false,frozen : true,tfixed: 'right'}
+                   ],
+          multiselect : true,
+          rowNum:10,
+          width:1000,
+         rowList:[10,20,30],
+         pager: '#pgfrc',
+        height : 250,
+
+         shrinkToFit: false,
+      });
+  var mydata = [ 
+                 {id : "1",invdate : "2007-10-01",name : "test",note : "note",note4 : "note4",note5 : "note5",amount : "200.00",tax : "10.00",total : "210.00"}, 
+                 {id : "2",invdate : "2007-10-02",name : "test2",note : "note2",note4 : "note4",note5 : "note5",amount : "300.00",tax : "20.00",total : "320.00"}, 
+                 {id : "3",invdate : "2007-09-01",name : "test3",note : "note3",note4 : "note4",note5 : "note5",amount : "400.00",tax : "30.00",total : "430.00"}, 
+                 {id : "4",invdate : "2007-10-04",name : "test",note : "note",note4 : "note4",note5 : "note5",amount : "200.00",tax : "10.00",total : "210.00"}, 
+                 {id : "5",invdate : "2007-10-05",name : "test2",note : "note2",note4 : "note4",note5 : "note5",amount : "300.00",tax : "20.00",total : "320.00"}, 
+                 {id : "6",invdate : "2007-09-06",name : "test3",note : "note3",note4 : "note4",note5 : "note5",amount : "400.00",tax : "30.00",total : "430.00"}, 
+                 {id : "7",invdate : "2007-10-04",name : "test",note : "note",note4 : "note4",note5 : "note5",amount : "200.00",tax : "10.00",total : "210.00"}, 
+                 {id : "8",invdate : "2007-10-03",name : "test2",note : "note2",note4 : "note4",note5 : "note5",amount : "300.00",tax : "20.00",total : "320.00"}, 
+                 {id : "9",invdate : "2007-09-01",name : "test3",note : "note3",note4 : "note4",note5 : "note5",amount : "400.00",tax : "30.00",total : "430.00"} 
+               ];
+  for ( var i = 0; i <= mydata.length; i++){
+    jQuery("#gfrc").jqGrid('addRowData', i + 1, mydata[i]);
+  }
+  jQuery("#gfrc").jqGrid('setTableFrozenColumns');
+}
+</script>
